@@ -2,5 +2,5 @@
 
 <%= render 'form', channel: @channel %>
 
-<%= link_to 'Show', @channel %> |
-<%= link_to 'Back', channels_path %>
+<%= link_to 'Show', [@headquarter, @channel] %> |
+<%= link_to 'Back', headquarter_channels_path(@headquarter) %>

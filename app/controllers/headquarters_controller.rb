@@ -12,7 +12,7 @@ class HeadquartersController < ApplicationController
 
   # GET /headquarters/new
   def new
-    @headquarter = Headquarter.new
+    @headquarter = Headquarter.new(user_id: current_user.id)
   end
 
   # GET /headquarters/1/edit

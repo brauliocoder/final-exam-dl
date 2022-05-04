@@ -20,9 +20,9 @@
         <td><%= channel.address %></td>
         <td><%= channel.is_active %></td>
         <td><%= channel.headquarter_id %></td>
-        <td><%= link_to 'Show', channel %></td>
-        <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
-        <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@headquarter, channel] %></td>
+        <td><%= link_to 'Edit', edit_headquarter_channel_path(@headquarter, channel) %></td>
+        <td><%= link_to 'Destroy', [@headquarter, channel], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Channel', new_channel_path %>
+<%= link_to 'New Channel', new_headquarter_channel_path(@headquarter) %>
