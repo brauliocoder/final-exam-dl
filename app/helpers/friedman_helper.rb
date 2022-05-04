@@ -1,0 +1,2 @@
+module FriedmanHelper
+end
