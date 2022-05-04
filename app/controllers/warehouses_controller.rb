@@ -12,7 +12,7 @@ class WarehousesController < ApplicationController
 
   # GET /warehouses/new
   def new
-    @warehouse = Warehouse.new
+    @warehouse = Warehouse.new(user_id: current_user.id)
   end
 
   # GET /warehouses/1/edit

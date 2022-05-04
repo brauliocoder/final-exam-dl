@@ -22,9 +22,9 @@
         <td><%= space.expiration %></td>
         <td><%= space.warehouse_id %></td>
         <td><%= space.product_id %></td>
-        <td><%= link_to 'Show', space %></td>
-        <td><%= link_to 'Edit', edit_space_path(space) %></td>
-        <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@warehouse, space] %></td>
+        <td><%= link_to 'Edit', edit_warehouse_space_path(@warehouse, space) %></td>
+        <td><%= link_to 'Destroy', [@warehouse, space], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Space', new_space_path %>
+<%= link_to 'New Space', new_warehouse_space_path(@warehouse) %>

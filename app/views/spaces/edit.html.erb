@@ -2,5 +2,5 @@
 
 <%= render 'form', space: @space %>
 
-<%= link_to 'Show', @space %> |
-<%= link_to 'Back', spaces_path %>
+<%= link_to 'Show', [@warehouse, @space] %> |
+<%= link_to 'Back', warehouse_spaces_path(@warehouse) %>
