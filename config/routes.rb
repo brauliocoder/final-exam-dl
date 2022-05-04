@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
-  get 'friedman/index'
-  resources :spaces
-  resources :products
-  resources :orders
-  resources :memberships
-  resources :roles
-  resources :channels
-  get 'home/index'
-  resources :warehouses
-  resources :headquarters
+  root to: 'friedman/index'
   devise_for :users
+
+  authenticate :user do
+    resources :headquarters do
+      resources :channels
+    end
+
+    resources :warehouses do
+      resources :spaces
+    end
+    
+    resources :products
+    resources :orders
+
+    resources :memberships
+    resources :roles
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
