@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Is completed:</strong>
+  <%= @order.is_completed %>
+</p>
+
+<p>
+  <strong>Membership:</strong>
+  <%= @order.membership_id %>
+</p>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @order.channel_id %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

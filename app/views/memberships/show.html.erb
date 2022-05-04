@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expiration:</strong>
+  <%= @membership.expiration %>
+</p>
+
+<p>
+  <strong>Autorenewal:</strong>
+  <%= @membership.autorenewal %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @membership.is_active %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @membership.role_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @membership.user_id %>
+</p>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @membership.channel_id %>
+</p>
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>
