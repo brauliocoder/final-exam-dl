@@ -26,10 +26,7 @@
     <%= form.check_box :is_active %>
   </div>
 
-  <div class="field">
-    <%= form.label :headquarter_id %>
-    <%= form.text_field :headquarter_id %>
-  </div>
+  <%= form.hidden_field :headquarter_id %>
 
   <div class="actions">
     <%= form.submit %>

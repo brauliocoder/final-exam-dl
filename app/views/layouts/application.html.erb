@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Metrikk</title>
+    <title>Metrik</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if current_user %>
+    <div class="d-flex vh-100">
+      <%= render 'layouts/components/sidebar' %>
+      <div class="vw-100 mh-100 overflow-auto">
+        <%= render 'layouts/components/toolbar' %>
+        <div class="container mb-5">
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'layouts/components/modal' %>
+    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

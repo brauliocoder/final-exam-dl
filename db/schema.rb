@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.bigint "headquarter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
 
   create_table "headquarters", force: :cascade do |t|
     t.string "brand"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -42,13 +42,15 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
   create_table "memberships", force: :cascade do |t|
     t.datetime "expiration"
     t.boolean "autorenewal"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "headquarter_id", null: false
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["channel_id"], name: "index_memberships_on_channel_id"
+    t.index ["headquarter_id"], name: "index_memberships_on_headquarter_id"
     t.index ["role_id"], name: "index_memberships_on_role_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
@@ -117,7 +119,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
     t.string "name"
     t.text "description"
     t.string "address"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
   add_foreign_key "channels", "headquarters"
   add_foreign_key "headquarters", "users"
   add_foreign_key "memberships", "channels"
+  add_foreign_key "memberships", "headquarters"
   add_foreign_key "memberships", "roles"
   add_foreign_key "memberships", "users"
   add_foreign_key "orders", "channels"

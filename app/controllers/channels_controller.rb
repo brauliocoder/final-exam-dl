@@ -59,9 +59,9 @@ class ChannelsController < ApplicationController
   end
 
   private
-  def get_headquarter
-    @headquarter = Headquarter.find(params[:headquarter_id])
-  end
+    def get_headquarter
+      @headquarter = Headquarter.find(params[:headquarter_id])
+    end
   
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
