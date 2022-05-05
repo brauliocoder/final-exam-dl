@@ -1,5 +1,5 @@
-<h1>New Warehouse</h1>
-
-<%= render 'form', warehouse: @warehouse %>
-
-<%= link_to 'Back', warehouses_path %>
+<%= turbo_frame_tag 'blablabla' do %>
+  <h1>New Warehouse</h1>
+  <%= render 'form', warehouse: @warehouse %>
+  <%= link_to 'Back', warehouses_path %>
+<% end %>

@@ -31,5 +31,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Warehouse', new_warehouse_path %>
+<%= turbo_frame_tag 'blablabla' do %>
+  <%= link_to 'New Warehouse', new_warehouse_path %>
+<% end %>
