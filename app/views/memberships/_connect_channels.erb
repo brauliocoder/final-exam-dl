@@ -11,21 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :invitation_email %>
-    <%= form.text_field :invitation_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
-  <div class="field">
-    <%= form.label :role_id %>
-    <%= form.collection_select :role_id, Role.all, :id, :title %>
-  </div>
-
+  <%= form.hidden_field :invitation_email %>
+  <%= form.hidden_field :is_active %>
+  <%= form.hidden_field :role_id %>
   <%= form.hidden_field :headquarter_id %>
 
   <%= render 'memberships/components/channels_editor', form: form %>

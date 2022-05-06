@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       
       resources :channels
       resources :memberships
+      get '/connect_warehouse/:id', to: 'memberships#connect_channels', as: 'connect_channels'
     end
     
     get '/connect_warehouse/:id', to: 'headquarters#connect_warehouse', as: 'connect_warehouse'

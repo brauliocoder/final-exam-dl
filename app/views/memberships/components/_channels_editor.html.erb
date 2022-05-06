@@ -1,0 +1,15 @@
+<% if @headquarter.channels.count > 0 %>
+  <div class="field">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-dark">Channels with access for the member</li>
+      <%= form.collection_check_boxes :channel_ids, @headquarter.channels, :id, :name do |c| %>
+        <li class="list-group-item">
+          <%= c.check_box(class:"form-check-input me-1") + c.label %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    
+<% else %>
+  <p>you don't have any channel created yet.</p>
+<% end %>

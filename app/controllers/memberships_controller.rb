@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :get_headquarter
-  before_action :set_membership, only: %i[ show edit update destroy ]
+  before_action :set_membership, only: %i[ show edit update destroy connect_channels ]
 
   # GET /memberships or /memberships.json
   def index
@@ -19,6 +19,10 @@ class MembershipsController < ApplicationController
   # GET /memberships/1/edit
   def edit
   end
+
+  def connect_channels
+  end
+  
 
   # POST /memberships or /memberships.json
   def create
@@ -73,6 +77,6 @@ class MembershipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:invitation_email, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, :channel_id)
+      params.require(:membership).permit(:invitation_email, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, channel_ids: [])
     end
 end
