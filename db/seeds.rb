@@ -8,9 +8,10 @@
 
 Role.delete_all()
 Role.create([
-  {title: "creator", description: ""},
-  {title: "admin", description: ""},
-  {title: "ally", description: ""}
+  {title: "ally", description: ""},
+  {title: "channel_admin", description: ""},
+  {title: "depot_admin", description: ""},
+  {title: "channel_depot_admin", description: ""}
 ])
 
 Product.delete_all()

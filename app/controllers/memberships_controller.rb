@@ -22,7 +22,7 @@ class MembershipsController < ApplicationController
 
   # POST /memberships or /memberships.json
   def create
-    @membership = @headquarter.memberships.build(channel_params)
+    @membership = @headquarter.memberships.build(membership_params)
 
     respond_to do |format|
       if @membership.save
@@ -70,6 +70,6 @@ class MembershipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:expiration, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, :channel_id)
+      params.require(:membership).permit(:invitation_email, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, :channel_id)
     end
 end

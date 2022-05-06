@@ -1,37 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Memberships</h1>
+<h1>Memberships for <%= @headquarter.brand %></h1>
+<%= link_to 'New Membership', new_headquarter_membership_path(@headquarter) %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Expiration</th>
-      <th>Autorenewal</th>
-      <th>Is active</th>
-      <th>Role</th>
-      <th>User</th>
-      <th>Channel</th>
-      <th colspan="3"></th>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">Role</th>
+      <th scope="col">Channels</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @memberships.each do |membership| %>
-      <tr>
-        <td><%= membership.expiration %></td>
-        <td><%= membership.autorenewal %></td>
-        <td><%= membership.is_active %></td>
-        <td><%= membership.role_id %></td>
-        <td><%= membership.user_id %></td>
-        <td><%= membership.channel_id %></td>
-        <td><%= link_to 'Show', [@headquarter, membership] %></td>
-        <td><%= link_to 'Edit', edit_headquarter_membership_path(@headquarter, membership) %></td>
-        <td><%= link_to 'Destroy', [@headquarter, membership], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% count = 1 %>
+  <% @headquarter.memberships.each do |member| %>
+    <tr>
+      <th scope="row"><%= count %></th>
+      <td><%= member.invitation_email %></td>
+      <td><span class="badge rounded-pill bg-primary">active</span></td>
+      <td><span class="badge rounded-pill bg-dark"><%= member.role.title %></span></td>
+      <td><span class="badge rounded-pill bg-info text-dark"><%= member.channels.count %></span><small class="ms-1"><%= "channel".pluralize(member.channels.count) %></small></td>
+      <td><%= render 'memberships/components/action_dropdown' %></td>
+    </tr>
+    <% count += 1 %>
+  <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Membership', new_headquarter_membership_path(@headquarter) %>

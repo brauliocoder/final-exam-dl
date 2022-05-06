@@ -12,7 +12,7 @@
         </li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.channels.count %></span> channels available</small></li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.warehouses.count %></span> warehouses related</small></li>
-        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..25) %></span> members</small></li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.memberships.count %></span> members</small></li>
       </ul>
     </div>
     <div class="card-footer d-flex justify-content-center">

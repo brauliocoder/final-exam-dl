@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.datetime "expiration"
-    t.boolean "autorenewal"
+    t.string "invitation_email"
+    t.string "unique_code"
     t.boolean "is_active", default: true
     t.bigint "role_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "headquarter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
