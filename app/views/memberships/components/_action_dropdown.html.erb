@@ -7,6 +7,8 @@
     <li><a class="dropdown-item py-1" href="#">Channels access</a></li>
     <li><a class="dropdown-item py-1" href="#">Edit member</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item py-1" href="#">Cancel this membership</a></li>
+    <li>
+      <%= link_to "Cancel this membership", [@headquarter, member], method: :delete, class: "dropdown-item py-1", data: { confirm: 'Are you sure?' }  %>
+    </li>
   </ul>
 </div>
