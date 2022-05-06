@@ -5,7 +5,13 @@
 
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a class="dropdown-item py-1" href="#">Channels access</a></li>
-    <li><a class="dropdown-item py-1" href="#">Edit member</a></li>
+
+    <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+        <%= link_to "Edit member", edit_headquarter_membership_path(@headquarter, member), class: "dropdown-item", class: "dropdown-item py-1", data: { 'turbo_frame': 'remote_modal'} %>
+      </span>
+    </li>
+
     <li><hr class="dropdown-divider"></li>
     <li>
       <%= link_to "Cancel this membership", [@headquarter, member], method: :delete, class: "dropdown-item py-1", data: { confirm: 'Are you sure?' }  %>

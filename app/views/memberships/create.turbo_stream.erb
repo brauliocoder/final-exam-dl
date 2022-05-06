@@ -1,2 +1,2 @@
 <%= turbo_stream.update dom_id(@headquarter), partial: "headquarters/components/headquarter_card/card", locals: { headquarter: @headquarter}  %>
-<%= turbo_stream.update "member_table", partial: "memberships/components/member_table" %>
+<%= turbo_stream.prepend "member-table-body", partial: "memberships/components/row", locals: { member: @membership } %>
