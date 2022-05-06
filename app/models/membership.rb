@@ -1,5 +1,7 @@
 class Membership < ApplicationRecord
   validates :invitation_email, presence: :true
+  validates :invitation_email, uniqueness: { scope: :headquarter }
+
   after_create :asign_unique_code
 
   belongs_to :role
@@ -12,5 +14,4 @@ class Membership < ApplicationRecord
     self.unique_code = Digest::SHA256.hexdigest "#{rand(1000..9999)}"
     self.save
   end
-  
 end

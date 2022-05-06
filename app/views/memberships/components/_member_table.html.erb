@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">Role</th>
+      <th scope="col">Channels</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% count = 1 %>
+  <% @headquarter.memberships.each do |member| %>
+    <tr>
+      <th scope="row"><%= count %></th>
+      <td><%= member.invitation_email %></td>
+      <td><span class="badge rounded-pill bg-primary">active</span></td>
+      <td><span class="badge rounded-pill bg-dark"><%= member.role.title %></span></td>
+      <td><span class="badge rounded-pill bg-info text-dark"><%= member.channels.count %></span><small class="ms-1"><%= "channel".pluralize(member.channels.count) %></small></td>
+      <td><%= render 'memberships/components/action_dropdown' %></td>
+    </tr>
+    <% count += 1 %>
+  <% end %>
+  </tbody>
+</table>
