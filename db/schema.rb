@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
-    t.string "address"
+    t.text "description"
     t.boolean "is_active", default: true
     t.bigint "headquarter_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
 
   create_table "headquarters", force: :cascade do |t|
     t.string "brand"
+    t.text "description"
     t.boolean "is_active", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -121,7 +122,6 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
   create_table "warehouses", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "address"
     t.boolean "is_active", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

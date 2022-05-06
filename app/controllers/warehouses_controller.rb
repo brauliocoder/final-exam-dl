@@ -73,6 +73,6 @@ class WarehousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def warehouse_params
-      params.require(:warehouse).permit(:name, :description, :address, :is_active, :user_id, headquarter_ids: [])
+      params.require(:warehouse).permit(:name, :description, :is_active, :user_id, headquarter_ids: [])
     end
 end

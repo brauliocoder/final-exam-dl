@@ -3,7 +3,6 @@ class CreateWarehouses < ActiveRecord::Migration[6.1]
     create_table :warehouses do |t|
       t.string :name
       t.text :description
-      t.string :address
       t.boolean :is_active, default: true
       t.references :user, null: false, foreign_key: true
 

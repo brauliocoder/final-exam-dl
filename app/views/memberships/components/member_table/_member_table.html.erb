@@ -10,7 +10,7 @@
   </thead>
   <tbody id="member-table-body">
     <% @headquarter.memberships.order("created_at DESC").each do |member| %>
-      <%= render 'memberships/components/row', member: member %>
+      <%= render 'memberships/components/member_table/row', member: member %>
     <% end %>
   </tbody>
 </table>

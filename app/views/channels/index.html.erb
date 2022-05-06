@@ -1,33 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Channels</h1>
+<h1>Channels for <%= @headquarter.brand %></h1>
+<span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+  <%= link_to 'New Channel', new_headquarter_channel_path(@headquarter), data: { 'turbo_frame': 'remote_modal'} %>
+</span>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Is active</th>
-      <th>Headquarter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @channels.each do |channel| %>
-      <tr>
-        <td><%= channel.name %></td>
-        <td><%= channel.address %></td>
-        <td><%= channel.is_active %></td>
-        <td><%= channel.headquarter_id %></td>
-        <td><%= link_to 'Show', [@headquarter, channel] %></td>
-        <td><%= link_to 'Edit', edit_headquarter_channel_path(@headquarter, channel) %></td>
-        <td><%= link_to 'Destroy', [@headquarter, channel], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Channel', new_headquarter_channel_path(@headquarter) %>
+<div id="member_table">
+  <%= render 'channels/components/channels_table/channels_table' %>
+</div>

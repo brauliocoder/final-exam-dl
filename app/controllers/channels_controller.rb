@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :get_headquarter
-  before_action :set_channel, only: %i[ show edit update destroy ]
+  before_action :set_channel, only: %i[ show edit update destroy connect_members ]
 
   # GET /channels or /channels.json
   def index
@@ -19,6 +19,10 @@ class ChannelsController < ApplicationController
   # GET /channels/1/edit
   def edit
   end
+
+  def connect_members
+  end
+  
 
   # POST /channels or /channels.json
   def create
@@ -40,6 +44,7 @@ class ChannelsController < ApplicationController
   def update
     respond_to do |format|
       if @channel.update(channel_params)
+        format.turbo_stream
         format.html { redirect_to headquarter_channel_path(@headquarter), notice: "Channel was successfully updated." }
         format.json { render :show, status: :ok, location: @channel }
       else
@@ -54,6 +59,7 @@ class ChannelsController < ApplicationController
     @channel.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to headquarter_channels_path(@headquarter), notice: "Channel was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -71,6 +77,6 @@ class ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def channel_params
-      params.require(:channel).permit(:name, :address, :is_active, :headquarter_id, warehouse_ids: [])
+      params.require(:channel).permit(:name, :description, :is_active, :headquarter_id, warehouse_ids: [], membership_ids: [])
     end
 end

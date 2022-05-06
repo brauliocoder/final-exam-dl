@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Members</th>
+      <th scope="col">Available</th>
+      <th class="text-end" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="channel-table-body">
+    <% @headquarter.channels.order("created_at DESC").each do |channel| %>
+      <%= render 'channels/components/channels_table/row', channel: channel %>
+    <% end %>
+  </tbody>
+</table>

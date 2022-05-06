@@ -1,0 +1,10 @@
+<tr id=<%= dom_id(channel) %>>
+  <td>
+    <div class="d-flex align-items-center">
+      <%= channel.name %>
+    </div>
+  </td>
+  <td><span class="badge rounded-pill bg-info text-dark"><%= channel.memberships.count %></span><small class="ms-1"><%= "member".pluralize(channel.memberships.count) %></small></td>
+  <td><span class="badge rounded-pill bg-primary"><%= channel.is_active == true ? ("on") : ("off") %></span></td>
+  <td class="d-flex justify-content-end"><%= render 'channels/components/channels_table/action_dropdown', channel: channel %></td>
+</tr>

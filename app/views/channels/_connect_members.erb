@@ -11,21 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="form-check form-switch">
-    <%= form.label :is_active, class:"form-check-label" %>
-    <%= form.check_box :is_active, class:"form-check-input" %>
-  </div>
-
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :description %>
+  <%= form.hidden_field :is_active %>
   <%= form.hidden_field :headquarter_id %>
 
   <%= render 'channels/components/members_editor', form: form %>

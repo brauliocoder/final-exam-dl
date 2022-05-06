@@ -1,1 +1,2 @@
 <%= turbo_stream.replace dom_id(@headquarter), partial: "headquarters/components/headquarter_card/card", locals: { headquarter: @headquarter}  %>
+<%= turbo_stream.prepend "channel-table-body", partial: "channels/components/channels_table/row", locals: { channel: @channel } %>

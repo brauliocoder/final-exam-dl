@@ -1,6 +1,4 @@
-<h1>Editing Channel</h1>
-
-<%= render 'form', channel: @channel %>
-
-<%= link_to 'Show', [@headquarter, @channel] %> |
-<%= link_to 'Back', headquarter_channels_path(@headquarter) %>
+<%= turbo_frame_tag 'remote_modal' do %>
+  <h1>Editing Channel</h1>
+  <%= render 'form', channel: @channel %>
+<% end %>

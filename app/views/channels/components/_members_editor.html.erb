@@ -1,0 +1,15 @@
+<% if @headquarter.memberships.count > 0 %>
+  <div class="field">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-dark">Members with access to this channel</li>
+      <%= form.collection_check_boxes :membership_ids, @headquarter.memberships, :id, :invitation_email do |c| %>
+        <li class="list-group-item">
+          <%= c.check_box(class:"form-check-input me-1") + c.label %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    
+<% else %>
+  <p>you don't have any member invited yet.</p>
+<% end %>

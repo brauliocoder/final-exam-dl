@@ -72,6 +72,6 @@ class HeadquartersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def headquarter_params
-      params.require(:headquarter).permit(:brand, :is_active, :user_id, warehouse_ids: [])
+      params.require(:headquarter).permit(:brand, :description, :is_active, :user_id, warehouse_ids: [])
     end
 end

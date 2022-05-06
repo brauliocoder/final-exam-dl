@@ -22,7 +22,6 @@ class MembershipsController < ApplicationController
 
   def connect_channels
   end
-  
 
   # POST /memberships or /memberships.json
   def create
@@ -77,6 +76,6 @@ class MembershipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:invitation_email, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, channel_ids: [])
+      params.require(:membership).permit(:invitation_email, :autorenewal, :is_active, :role_id, :user_id, :headquarter_id, channel_ids: [] )
     end
 end
