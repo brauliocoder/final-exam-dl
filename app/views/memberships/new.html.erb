@@ -1,5 +1,4 @@
-<h1>New Membership</h1>
-
-<%= render 'form', membership: @membership %>
-
-<%= link_to 'Back', headquarter_memberships_path(@headquarter) %>
+<%= turbo_frame_tag "remote_modal" do %>
+  <h1>New Membership</h1>
+  <%= render 'form', membership: @membership %>
+<% end %>
