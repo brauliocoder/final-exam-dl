@@ -1,4 +1,4 @@
 <%= turbo_frame_tag "remote_modal" do %>
-  <h1>Connect Channels</h1>
+  <h1>Give chanel access to <%= @membership.invitation_email %></h1>
   <%= render 'connect_channels', membership: @membership %>
 <% end %>

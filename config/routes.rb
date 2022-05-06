@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :orders
 
     # Restringir acceso a CRUD
-    resources :roles
+    resources :roles, only: [:show, :index]
   end
   
 end

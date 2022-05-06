@@ -5,6 +5,12 @@
 
   <ul class="dropdown-menu shadow-lg" aria-labelledby="dropdownMenuLink">
     <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+        <%= link_to 'Add new member', new_headquarter_membership_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
+      </span>
+    </li>
+    
+    <li>
       <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
         <%= link_to 'Create new channel', new_headquarter_channel_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
       </span>
@@ -13,12 +19,6 @@
     <li>
       <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
         <%= link_to 'Connect warehouse access', connect_warehouse_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
-      </span>
-    </li>
-
-    <li>
-      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
-        <%= link_to 'Add new member', new_headquarter_membership_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
       </span>
     </li>
 

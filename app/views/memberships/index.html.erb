@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Memberships for <%= @headquarter.brand %></h1>
+<h1>Members of <%= @headquarter.brand %></h1>
 <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
   <%= link_to 'New Membership', new_headquarter_membership_path(@headquarter), data: { 'turbo_frame': 'remote_modal'} %>
 </span>

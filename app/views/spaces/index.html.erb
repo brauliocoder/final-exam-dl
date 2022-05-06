@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Spaces</h1>
+<span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+  <%= link_to 'New Space', new_warehouse_space_path(@warehouse), data: { 'turbo_frame': 'remote_modal'} %>
+</span>
 
 <table>
   <thead>
@@ -29,7 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Space', new_warehouse_space_path(@warehouse) %>
