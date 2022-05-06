@@ -1,0 +1,24 @@
+<div class="col" id=<%= dom_id(warehouse) %>>
+  <div class="card border-dark text-light bg-dark bg-opacity-75 p-0 shadow">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <%= warehouse.name %>
+      <%= render 'warehouses/components/warehouse_card/actions_dropdown', warehouse: warehouse %>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item bg-secondary text-white">
+          <small>created <%= time_ago_in_words(warehouse.created_at.time) %> ago</small> <br>
+          <small>modified <%= time_ago_in_words(warehouse.updated_at.time) %> ago</small>
+        </li>
+        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= warehouse.channels.count %></span> channels connected</small></li>
+        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= rand(1..5) %></span> products contained</small></li>
+      </ul>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-sm btn-outline-light">Channels</button>
+        <button type="button" class="btn btn-sm btn-outline-light">Products</button>
+      </div>
+    </div>
+  </div>
+</div>

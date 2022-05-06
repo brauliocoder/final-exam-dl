@@ -1,36 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Warehouses</h1>
+<div class="d-flex justify-content-between mb-2">
+  <h2 class="m-0 p-0">Your warehouses</h2>
+  <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+    <%= link_to 'Create New Warehouse', new_warehouse_path, class: "btn btn-outline-dark", data: { 'turbo_frame': 'remote_modal'} %>
+  </span>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Is active</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @warehouses.each do |warehouse| %>
-      <tr>
-        <td><%= warehouse.name %></td>
-        <td><%= warehouse.description %></td>
-        <td><%= warehouse.address %></td>
-        <td><%= warehouse.is_active %></td>
-        <td><%= warehouse.user_id %></td>
-        <td><%= link_to 'Show', warehouse %></td>
-        <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
-        <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= turbo_frame_tag 'blablabla' do %>
-  <%= link_to 'New Warehouse', new_warehouse_path %>
-<% end %>
+<div class="row row-cols-4 g-3 gy-4" id="warehouses">
+  <% @warehouses.each do |wh| %>
+    <%= render 'warehouses/components/warehouse_card/card', warehouse: wh %>
+  <% end %>
+</div>

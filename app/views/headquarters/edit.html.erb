@@ -1,6 +1,4 @@
-<h1>Editing Headquarter</h1>
-
-<%= render 'form', headquarter: @headquarter %>
-
-<%= link_to 'Show', @headquarter %> |
-<%= link_to 'Back', headquarters_path %>
+<%= turbo_frame_tag "remote_modal" do %>
+  <h1>Editing Headquarter</h1>
+  <%= render 'form', headquarter: @headquarter %>
+<% end %>

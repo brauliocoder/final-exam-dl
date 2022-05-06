@@ -1,0 +1,25 @@
+<div class="dropdown">
+  <a class="btn btn-secondary border-dark shadow-sm btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Fast Actions
+  </a>
+
+  <ul class="dropdown-menu shadow-lg" aria-labelledby="dropdownMenuLink">
+    <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+        <%# <%= link_to 'Create new channel', new_warehouse_channel_path(warehouse), data: { 'turbo_frame': 'remote_modal'}, class: 'dropdown-item' %>
+      </span>
+    </li>
+
+    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Add products</a></li>
+    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Connect with channel</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Info about <%= warehouse.name %></a></li>
+    <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+        <%= link_to "Edit #{warehouse.name}", edit_warehouse_path(warehouse), class: "dropdown-item", data: { 'turbo_frame': 'remote_modal'} %>
+      </span>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li><%= link_to "Close warehouse", warehouse, method: :delete, class: "dropdown-item", data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+</div>

@@ -25,6 +25,7 @@ class WarehousesController < ApplicationController
 
     respond_to do |format|
       if @warehouse.save
+        format.turbo_stream
         format.html { redirect_to warehouse_url(@warehouse), notice: "Warehouse was successfully created." }
         format.json { render :show, status: :created, location: @warehouse }
       else
@@ -38,6 +39,7 @@ class WarehousesController < ApplicationController
   def update
     respond_to do |format|
       if @warehouse.update(warehouse_params)
+        format.turbo_stream
         format.html { redirect_to warehouse_url(@warehouse), notice: "Warehouse was successfully updated." }
         format.json { render :show, status: :ok, location: @warehouse }
       else
@@ -52,6 +54,7 @@ class WarehousesController < ApplicationController
     @warehouse.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to warehouses_url, notice: "Warehouse was successfully destroyed." }
       format.json { head :no_content }
     end

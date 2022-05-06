@@ -1,50 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <div class="d-flex justify-content-between mb-2">
-  <h2 class="m-0 p-0">Your Headquarters</h2>
-  <%= link_to 'Create New Headquarter', new_headquarter_path, class: "btn btn-outline-dark" %>
+  <h2 class="m-0 p-0">Your headquarters</h2>
+  <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+    <%= link_to 'Create New Headquarter', new_headquarter_path, class: "btn btn-outline-dark", data: { 'turbo_frame': 'remote_modal'} %>
+  </span>
 </div>
 
-<div class="row row-cols-4 g-3 gy-4">
-  <% @headquarters.each do |headquarter| %>
-    <div class="col">
-      <div class="card text-dark bg-light p-0 shadow-sm">
-        <div class="card-header d-flex align-items-center justify-content-between"> 
-          <%= headquarter.brand %>
-          <div class="dropdown">
-            <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Fast Actions
-            </a>
-
-            <ul class="dropdown-menu shadow-lg" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Create new channel</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Connect warehouse access</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Add new member</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Info about <%= headquarter.brand %></a></li>
-              <li><a class="dropdown-item" href="#">Edit <%= headquarter.brand %></a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Close Headquarter</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-body">
-          <ul class="list-group">
-            <li class="list-group-item"><small>created <%= time_ago_in_words(headquarter.created_at.time) %> ago</small></li>
-            <li class="list-group-item"><small>modified <%= time_ago_in_words(headquarter.updated_at.time) %> ago</small></li>
-            <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.channels.count %></span> channels available</small></li>
-            <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..5) %></span> warehouses related</small></li>
-            <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..25) %></span> members</small></li>
-          </ul>
-        </div>
-        <div class="card-footer d-flex justify-content-center">
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <%= link_to "Channels", headquarter_channels_path(headquarter), class: "btn btn-sm btn-outline-dark" %>
-            <button type="button" class="btn btn-sm btn-outline-dark">Warehouses</button>
-            <%= link_to "Members", headquarter_memberships_path(headquarter), class: "btn btn-sm btn-outline-dark" %>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row row-cols-4 g-3 gy-4" id="headquarters">
+  <% @headquarters.each do |hq| %>
+    <%= render 'headquarters/components/headquarter_card/card', headquarter: hq %>
   <% end %>
 </div>

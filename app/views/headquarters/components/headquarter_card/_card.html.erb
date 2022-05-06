@@ -1,0 +1,26 @@
+<div class="col" id=<%= dom_id(headquarter) %>>
+  <div class="card text-dark bg-light p-0 shadow-sm">
+    <div class="card-header d-flex align-items-center justify-content-between"> 
+      <%= headquarter.brand %>
+      <%= render 'headquarters/components/headquarter_card/actions_dropdown', headquarter: headquarter %>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <small>created <%= time_ago_in_words(headquarter.created_at.time) %> ago</small> <br>
+          <small>modified <%= time_ago_in_words(headquarter.updated_at.time) %> ago</small>
+        </li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.channels.count %></span> channels available</small></li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..5) %></span> warehouses related</small></li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..25) %></span> members</small></li>
+      </ul>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <%= link_to "Channels", headquarter_channels_path(headquarter), class: "btn btn-sm btn-outline-dark" %>
+        <button type="button" class="btn btn-sm btn-outline-dark">Warehouses</button>
+        <%= link_to "Members", headquarter_memberships_path(headquarter), class: "btn btn-sm btn-outline-dark" %>
+      </div>
+    </div>
+  </div>
+</div>

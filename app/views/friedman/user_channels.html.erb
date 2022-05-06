@@ -1,21 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div class="d-flex justify-content-between mb-2">
-  <h2 class="m-0 p-0">Your Channels</h2>
+  <h2 class="m-0 p-0">Channels you own</h2>
   <%# TODO Link to action %>
 </div>
 
-<% current_user.headquarters.each do |headquarter| %>
-  <ul>
-    <li><%= headquarter.brand %></li>
-    <% if headquarter.channels.count > 0 %>
-      <ul>
-      <% headquarter.channels.each do |channel| %>
-        <li><%= channel.name %></li>
-      <% end %>
-      </ul>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'friedman/components/channels/card', headquarters: current_user.headquarters %>
 
 <%# TODO canales a los que perteneces invitado %>

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, autocomplete: "off" %>
   </div>
 
   <div class="field">
@@ -24,6 +24,13 @@
   <div class="field">
     <%= form.label :is_active %>
     <%= form.check_box :is_active %>
+  </div>
+
+ <div class="field">
+    <%= form.label :warehouse_ids %>
+    <%= form.collection_check_boxes :warehouse_ids, current_user.warehouses, :id, :name do |c| %>
+      <%= c.label(:"data-value" => c.value) { c.check_box + c.text } %>
+    <% end %>
   </div>
 
   <%= form.hidden_field :headquarter_id %>

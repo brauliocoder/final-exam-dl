@@ -26,6 +26,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
+        format.turbo_stream
         format.html { redirect_to headquarter_channels_path(@headquarter), notice: "Channel was successfully created." }
         format.json { render :show, status: :created, location: @channel }
       else
@@ -70,6 +71,6 @@ class ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def channel_params
-      params.require(:channel).permit(:name, :address, :is_active, :headquarter_id)
+      params.require(:channel).permit(:name, :address, :is_active, :headquarter_id, warehouse_ids: [])
     end
 end

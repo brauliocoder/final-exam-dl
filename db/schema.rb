@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_04_170642) do
+ActiveRecord::Schema.define(version: 2022_05_06_141247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["headquarter_id"], name: "index_channels_on_headquarter_id"
+  end
+
+  create_table "channels_memberships", id: false, force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "membership_id", null: false
   end
 
   create_table "channels_warehouses", id: false, force: :cascade do |t|
@@ -39,6 +44,11 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
     t.index ["user_id"], name: "index_headquarters_on_user_id"
   end
 
+  create_table "headquarters_warehouses", id: false, force: :cascade do |t|
+    t.bigint "headquarter_id", null: false
+    t.bigint "warehouse_id", null: false
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.datetime "expiration"
     t.boolean "autorenewal"
@@ -46,10 +56,8 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
     t.bigint "headquarter_id", null: false
-    t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["channel_id"], name: "index_memberships_on_channel_id"
     t.index ["headquarter_id"], name: "index_memberships_on_headquarter_id"
     t.index ["role_id"], name: "index_memberships_on_role_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
@@ -128,7 +136,6 @@ ActiveRecord::Schema.define(version: 2022_05_04_170642) do
 
   add_foreign_key "channels", "headquarters"
   add_foreign_key "headquarters", "users"
-  add_foreign_key "memberships", "channels"
   add_foreign_key "memberships", "headquarters"
   add_foreign_key "memberships", "roles"
   add_foreign_key "memberships", "users"

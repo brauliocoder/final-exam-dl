@@ -25,6 +25,7 @@ class HeadquartersController < ApplicationController
 
     respond_to do |format|
       if @headquarter.save
+        format.turbo_stream
         format.html { redirect_to headquarter_url(@headquarter), notice: "Headquarter was successfully created." }
         format.json { render :show, status: :created, location: @headquarter }
       else
@@ -51,7 +52,8 @@ class HeadquartersController < ApplicationController
   def destroy
     @headquarter.destroy
 
-    respond_to do |format|
+    respond_to do |format|  
+      format.turbo_stream
       format.html { redirect_to headquarters_url, notice: "Headquarter was successfully destroyed." }
       format.json { head :no_content }
     end
