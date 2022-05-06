@@ -11,15 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div class="form-check form-switch">
-    <%= form.label :is_active, class:"form-check-label" %>
-    <%= form.check_box :is_active, class:"form-check-input" %>
-  </div>
+  <%= form.hidden_field :brand %>
+  <%= form.hidden_field :is_active %>
+  <%= form.hidden_field :user_id %>
 
   <% if current_user.warehouses.count > 0 %>
     <div class="field">
@@ -33,13 +27,10 @@
       </ul>
     </div>
   <% else %>
-    <%# TODO if empty, offer create new warehouse %>
     <p>You don't have any warehouse yet, start creating one.</p>
   <% end %>
 
-  <%= form.hidden_field :user_id %>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Connect" %>
   </div>
 <% end %>

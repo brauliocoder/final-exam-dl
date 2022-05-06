@@ -30,11 +30,6 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
     t.bigint "membership_id", null: false
   end
 
-  create_table "channels_warehouses", id: false, force: :cascade do |t|
-    t.bigint "channel_id", null: false
-    t.bigint "warehouse_id", null: false
-  end
-
   create_table "headquarters", force: :cascade do |t|
     t.string "brand"
     t.boolean "is_active", default: true

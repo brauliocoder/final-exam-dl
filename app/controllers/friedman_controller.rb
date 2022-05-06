@@ -3,8 +3,5 @@ class FriedmanController < ApplicationController
 
   def index
   end
-
-  def user_channels
-  end
   
 end

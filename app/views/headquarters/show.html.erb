@@ -1,20 +1,18 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag "remote_modal" do %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @headquarter.brand %>
-</p>
+  <p>
+    <strong>Brand:</strong>
+    <%= @headquarter.brand %>
+  </p>
 
-<p>
-  <strong>Is active:</strong>
-  <%= @headquarter.is_active %>
-</p>
+  <p>
+    <strong>Is active:</strong>
+    <%= @headquarter.is_active %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @headquarter.user_id %>
-</p>
-
-<%= link_to 'New Channel', new_headquarter_channel_path(@headquarter) %> |
-<%= link_to 'Edit', edit_headquarter_path(@headquarter) %> |
-<%= link_to 'Back', headquarters_path %>
+  <p>
+    <strong>User:</strong>
+    <%= @headquarter.user_id %>
+  </p>
+<% end %>

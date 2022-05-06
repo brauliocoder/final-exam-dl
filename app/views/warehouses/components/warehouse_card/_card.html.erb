@@ -10,7 +10,7 @@
           <small>created <%= time_ago_in_words(warehouse.created_at.time) %> ago</small> <br>
           <small>modified <%= time_ago_in_words(warehouse.updated_at.time) %> ago</small>
         </li>
-        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= warehouse.channels.count %></span> channels connected</small></li>
+        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= warehouse.headquarters.count %></span> headquarters connected</small></li>
         <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= rand(1..5) %></span> products contained</small></li>
       </ul>
     </div>

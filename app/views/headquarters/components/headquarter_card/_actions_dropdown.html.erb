@@ -9,11 +9,23 @@
         <%= link_to 'Create new channel', new_headquarter_channel_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
       </span>
     </li>
-    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Connect warehouse access</a></li>
+
+    <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+        <%= link_to 'Connect warehouse access', connect_warehouse_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
+      </span>
+    </li>
+
     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Add new member</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Info about <%= headquarter.brand %></a></li>
-
+    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#"></a></li>
+    
+    <li>
+      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+        <%= link_to "Info about #{headquarter.brand}", headquarter_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
+      </span>
+    </li>
+    
     <li>
       <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
         <%= link_to "Edit #{headquarter.brand}", edit_headquarter_path(headquarter), class: "dropdown-item", data: { 'turbo_frame': 'remote_modal'} %>

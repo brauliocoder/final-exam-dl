@@ -1,29 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag 'remote_modal' do %>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @warehouse.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @warehouse.name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @warehouse.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @warehouse.description %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @warehouse.address %>
-</p>
+  <p>
+    <strong>Address:</strong>
+    <%= @warehouse.address %>
+  </p>
 
-<p>
-  <strong>Is active:</strong>
-  <%= @warehouse.is_active %>
-</p>
+  <p>
+    <strong>Is active:</strong>
+    <%= @warehouse.is_active %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @warehouse.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
-<%= link_to 'Back', warehouses_path %>
+  <p>
+    <strong>User:</strong>
+    <%= @warehouse.user_id %>
+  </p>
+<% end %>

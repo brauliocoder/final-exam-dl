@@ -4,16 +4,18 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :headquarters do
+      
       resources :channels
       resources :memberships
     end
+    
+    get '/connect_warehouse/:id', to: 'headquarters#connect_warehouse', as: 'connect_warehouse'
+    get '/connect_headquarter/:id', to: 'warehouses#connect_headquarter', as: 'connect_headquarter'
 
     resources :warehouses do
       resources :spaces
     end
-
-    get '/your_channels/', to: 'friedman#user_channels', as: 'your_channels'
-
+    
     resources :products
     resources :orders
 

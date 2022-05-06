@@ -1,23 +1,28 @@
 class WarehousesController < ApplicationController
-  before_action :set_warehouse, only: %i[ show edit update destroy ]
+  before_action :set_warehouse, only: %i[ show edit update destroy connect_headquarter ]
 
+  
   # GET /warehouses or /warehouses.json
   def index
     @warehouses = Warehouse.all
   end
-
+  
   # GET /warehouses/1 or /warehouses/1.json
   def show
   end
-
+  
   # GET /warehouses/new
   def new
     @warehouse = Warehouse.new(user_id: current_user.id)
   end
-
+  
   # GET /warehouses/1/edit
   def edit
   end
+
+  def connect_headquarter
+  end
+  
 
   # POST /warehouses or /warehouses.json
   def create
@@ -68,6 +73,6 @@ class WarehousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def warehouse_params
-      params.require(:warehouse).permit(:name, :description, :address, :is_active, :user_id)
+      params.require(:warehouse).permit(:name, :description, :address, :is_active, :user_id, headquarter_ids: [])
     end
 end

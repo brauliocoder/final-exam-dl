@@ -11,7 +11,7 @@
           <small>modified <%= time_ago_in_words(headquarter.updated_at.time) %> ago</small>
         </li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.channels.count %></span> channels available</small></li>
-        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..5) %></span> warehouses related</small></li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.warehouses.count %></span> warehouses related</small></li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= rand(1..25) %></span> members</small></li>
       </ul>
     </div>

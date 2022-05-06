@@ -11,26 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :description %>
+  <%= form.hidden_field :address %>
+  <%= form.hidden_field :is_active %>
   <%= form.hidden_field :user_id %>
 
   <% if current_user.headquarters.count > 0 %>

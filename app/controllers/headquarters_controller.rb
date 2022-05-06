@@ -1,5 +1,5 @@
 class HeadquartersController < ApplicationController
-  before_action :set_headquarter, only: %i[ show edit update destroy ]
+  before_action :set_headquarter, only: %i[ show edit update destroy connect_warehouse ]
 
   # GET /headquarters or /headquarters.json
   def index
@@ -18,6 +18,10 @@ class HeadquartersController < ApplicationController
   # GET /headquarters/1/edit
   def edit
   end
+
+  def connect_warehouse
+  end
+  
 
   # POST /headquarters or /headquarters.json
   def create
@@ -39,6 +43,7 @@ class HeadquartersController < ApplicationController
   def update
     respond_to do |format|
       if @headquarter.update(headquarter_params)
+        format.turbo_stream
         format.html { redirect_to headquarter_url(@headquarter), notice: "Headquarter was successfully updated." }
         format.json { render :show, status: :ok, location: @headquarter }
       else
@@ -67,6 +72,6 @@ class HeadquartersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def headquarter_params
-      params.require(:headquarter).permit(:brand, :is_active, :user_id)
+      params.require(:headquarter).permit(:brand, :is_active, :user_id, warehouse_ids: [])
     end
 end

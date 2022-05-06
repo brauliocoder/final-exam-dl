@@ -21,16 +21,9 @@
     <%= form.text_field :address %>
   </div>
 
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
- <div class="field">
-    <%= form.label :warehouse_ids %>
-    <%= form.collection_check_boxes :warehouse_ids, current_user.warehouses, :id, :name do |c| %>
-      <%= c.label(:"data-value" => c.value) { c.check_box + c.text } %>
-    <% end %>
+  <div class="form-check form-switch">
+    <%= form.label :is_active, class:"form-check-label" %>
+    <%= form.check_box :is_active, class:"form-check-input" %>
   </div>
 
   <%= form.hidden_field :headquarter_id %>
