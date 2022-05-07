@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag 'remote_modal' do %>
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Product:</strong>
+    <%= @space.product.name %>
+  </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @space.stock %>
-</p>
+  <p>
+    <strong>Stock:</strong>
+    <%= @space.stock %>
+  </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @space.price %>
-</p>
+  <p>
+    <strong>Price:</strong>
+    <%= @space.price %>
+  </p>
 
-<p>
-  <strong>Warehouse:</strong>
-  <%= @space.warehouse_id %>
-</p>
-
-<p>
-  <strong>Product:</strong>
-  <%= @space.product_id %>
-</p>
-
-<%= link_to 'Edit', edit_warehouse_space_path(@warehouse, @space) %> |
-<%= link_to 'Back', warehouse_spaces_path(@warehouse) %>
+  <p>
+    <strong>Warehouse:</strong>
+    <%= @space.warehouse_id %>
+  </p>
+<% end %>

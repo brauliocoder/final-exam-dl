@@ -1,0 +1,2 @@
+<%= turbo_stream.update dom_id(@warehouse), partial: "warehouses/components/warehouse_card/card", locals: { warehouse: @warehouse} %>
+<%= turbo_stream.prepend "products-table-body", partial: "spaces/components/products_table/row", locals: { space: @space } %>

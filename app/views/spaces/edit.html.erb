@@ -1,6 +1,5 @@
-<h1>Editing Space</h1>
+<%= turbo_frame_tag 'remote_modal' do %>
+  <h1>Editing Space</h1>
+  <%= render 'form', space: @space %>
+<% end %>
 
-<%= render 'form', space: @space %>
-
-<%= link_to 'Show', [@warehouse, @space] %> |
-<%= link_to 'Back', warehouse_spaces_path(@warehouse) %>
