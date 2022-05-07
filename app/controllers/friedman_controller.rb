@@ -9,6 +9,6 @@ class FriedmanController < ApplicationController
 
   private
     def set_channel
-      @channel = current_user.find_channel.(params[:channel_id])
+      @channel = Channel.find(params[:channel_id])
     end
 end
