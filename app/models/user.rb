@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :headquarters
   has_many :warehouses
+  has_many :memberships
 end
