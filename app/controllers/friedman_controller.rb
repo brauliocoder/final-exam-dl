@@ -3,14 +3,19 @@ class FriedmanController < ApplicationController
 
   def index
   end
-
+  
   def cashbox_mode
     @order = current_order
+    @products = @channel.search_product(params[:search])
   end
 
   private
     def set_channel
       @channel = Channel.find(params[:channel_id])
+    end
+    
+    def friedman_params
+      params.require(:channel).permit(:search)
     end
 
     def current_order

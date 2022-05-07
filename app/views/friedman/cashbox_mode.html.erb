@@ -2,14 +2,17 @@
   <div class="col-7 h-100 overflow-auto">
     <div class="sticky-top py-2 bg-white shadow-sm">
       <h3> <%= @channel.headquarter.brand %> <%= @channel.name %></h3>
-      <form class="d-flex px-3">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <%= form_tag(cashbox_mode_path(@channel), method: :get, class: "d-flex mx-2") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control me-2" %>
+        <%= submit_tag "Search", class: "btn btn-outline-success" %>
+      <% end %>
+
     </div>
-    <div>
-      <% 50.times do %>
-        <%= render 'friedman/components/cashbox/search_item' %>
+    <div id="item-search-results">
+      <%# TODO search items %>
+      <% @products.each do |space| %>
+        <%= render 'friedman/components/cashbox/search_item', space: space %>
       <% end %>
     </div>
   </div>
@@ -18,22 +21,15 @@
       <div class="bg-white p-2 sticky-top border-bottom d-flex justify-content-between align-items-center">
         <h3 class="m-0">Ticket</h3>
       </div>
-      <div class="p-2">
-        <% 15.times do %>
-          <%= render 'friedman/components/cashbox/item_card' %>
-        <% end %>
+      <div id="ticket-items" class="p-2">
+        <%# TODO ticket items %>
+        <%= render 'friedman/components/cashbox/item_card' %>
       </div>
     </div>
     <div class="bg-light mt-auto border-top">
-      <div class="p-2 d-flex justify-content-between align-items-center">
-        <div class="ms-2">
-          <span class="badge rounded-pill bg-secondary">X</span> products
-        </div>
-        <div>
-          <h3 class="m-0">$xxxx</h3>
-          IVA <span>$xxxx</span>
-        </div>
-      </div>
+
+      <%= render 'friedman/components/cashbox/ticket_info' %>
+
       <div class="border-top border-dark p-2 d-flex justify-content-between">
         <a href="#" class="btn btn-outline-danger">Discard</a>
         <a href="#" class="btn btn-success active" aria-current="page">Complete transaction</a>

@@ -1,8 +1,9 @@
 <div class="bg-light border border-1 rounded-3 d-flex justify-content-between align-items-center mt-1">
   <ul class="list-group list-group-horizontal">
-    <li class="list-group-item bg-light border-0 border-end"><span class="badge bg-white border text-dark fs-6 me-2">$nnnnn</span></li>
-    <li class="list-group-item bg-light border-0 border-end"><span class="badge rounded-pill border bg-white text-dark">15</span> stock</li>
-    <li class="list-group-item bg-light border-0"><span class="me-1">product.title</span></li>
+    <li class="list-group-item bg-light border-0 border-end"><span class="badge bg-success border text-light fs-6 me-2">$<%= space.price %></span></li>
+    <li class="list-group-item bg-light border-0 border-end"><span class="badge rounded-pill border bg-white text-dark"><%= space.stock %></span> stock</li>
+    <li class="list-group-item bg-light border-0 border-end"><span class="badge rounded-pill border bg-white text-dark"><%= space.warehouse.name %></span></li>
+    <li class="list-group-item bg-light border-0"><span class="me-1"><%= space.product.name %></span></li>
   </ul>
   <button type="button" class="me-2 px-4 btn btn-secondary btn-sm">add</button>
 </div>
