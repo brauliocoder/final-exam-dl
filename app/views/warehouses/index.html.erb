@@ -7,7 +7,7 @@
   </span>
 </div>
 
-<div class="row row-cols-4 g-3 gy-4" id="warehouses">
+<div class="row row-cols-2 g-2 gy-4" id="warehouses">
   <% @warehouses.each do |wh| %>
     <%= render 'warehouses/components/warehouse_card/card', warehouse: wh %>
   <% end %>

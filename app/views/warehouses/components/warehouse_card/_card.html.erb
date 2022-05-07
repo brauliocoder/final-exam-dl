@@ -10,12 +10,12 @@
           <small>created <%= time_ago_in_words(warehouse.created_at.time) %> ago</small> <br>
           <small>modified <%= time_ago_in_words(warehouse.updated_at.time) %> ago</small>
         </li>
-        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= warehouse.headquarters.count %></span> headquarters connected</small></li>
-        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= rand(1..5) %></span> products contained</small></li>
+        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= warehouse.headquarters.count %></span> headquarters using this warehouse</small></li>
+        <li class="list-group-item bg-secondary text-white"><small><span class="badge rounded-pill text-dark bg-light"><%= rand(1..5) %></span> products in this depot</small></li>
       </ul>
     </div>
-    <div class="card-footer d-flex justify-content-center">
-      <%= link_to "Inventory", warehouse_spaces_path(warehouse), class: "btn btn-sm btn-outline-light px-2"  %>
+    <div class="card-footer d-flex justify-content-start">
+      <%= link_to "Manage inventory", warehouse_spaces_path(warehouse), class: "btn btn-sm btn-outline-light px-2"  %>
     </div>
   </div>
 </div>

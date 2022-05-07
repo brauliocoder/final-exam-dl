@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :warehouse_id %>
+
   <div class="field">
     <%= form.label :stock %>
     <%= form.number_field :stock %>
@@ -23,12 +25,7 @@
 
   <div class="field">
     <%= form.label :expiration %>
-    <%= form.datetime_select :expiration %>
-  </div>
-
-  <div class="field">
-    <%= form.label :warehouse_id %>
-    <%= form.text_field :warehouse_id %>
+    <%= form.date_select :expiration %>
   </div>
 
   <div class="field">

@@ -15,12 +15,11 @@
       <div class="d-flex vh-100">
         <%= render 'layouts/components/sidebar' %>
         <div class="vw-100 mh-100 overflow-auto">
-          <%= render 'layouts/components/toolbar' %>
           <div class="container mb-5">
             <%= yield %>
+            <%= render 'layouts/components/modal' %>
           </div>
         </div>
-        <%= render 'layouts/components/modal' %>
       </div>
     <% else %>
       <%= yield %>
