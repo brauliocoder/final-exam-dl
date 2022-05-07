@@ -24,11 +24,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :expiration %>
-    <%= form.date_select :expiration %>
-  </div>
-
-  <div class="field">
     <%= form.label :product_id %>
     <%= form.collection_select :product_id, Product.all, :id, :name, { include_blank: true } %>
   </div>

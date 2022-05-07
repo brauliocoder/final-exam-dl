@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
-  has_many :spaces
+  has_one :space
   has_many :warehouses, through: :spaces
 end

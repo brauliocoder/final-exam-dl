@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Price</th>
+      <th class="text-end" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="products-table-body">
+    <% @warehouse.spaces.order("created_at DESC").each do |space| %>
+      <%= render 'spaces/components/products_table/row', space: space %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,34 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Spaces</h1>
-<span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
-  <%= link_to 'New Space', new_warehouse_space_path(@warehouse), data: { 'turbo_frame': 'remote_modal'} %>
+<h1>Products of <%= @warehouse.name %></h1>
+<span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+  <%= link_to 'New Product', new_warehouse_space_path(@warehouse), data: { 'turbo_frame': 'remote_modal'} %>
 </span>
 
-<table>
-  <thead>
-    <tr>
-      <th>Stock</th>
-      <th>Price</th>
-      <th>Expiration</th>
-      <th>Warehouse</th>
-      <th>Product</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="products_table">
+  <%= render 'spaces/components/products_table/products_table' %>
+</div>
 
-  <tbody>
-    <% @spaces.each do |space| %>
-      <tr>
-        <td><%= space.stock %></td>
-        <td><%= space.price %></td>
-        <td><%= space.expiration %></td>
-        <td><%= space.warehouse_id %></td>
-        <td><%= space.product_id %></td>
-        <td><%= link_to 'Show', [@warehouse, space] %></td>
-        <td><%= link_to 'Edit', edit_warehouse_space_path(@warehouse, space) %></td>
-        <td><%= link_to 'Destroy', [@warehouse, space], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

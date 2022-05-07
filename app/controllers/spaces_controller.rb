@@ -26,6 +26,7 @@ class SpacesController < ApplicationController
 
     respond_to do |format|
       if @space.save
+        format.turbo_stream
         format.html { redirect_to warehouse_spaces_url(@warehouse), notice: "Space was successfully created." }
         format.json { render :show, status: :created, location: @space }
       else
@@ -39,6 +40,7 @@ class SpacesController < ApplicationController
   def update
     respond_to do |format|
       if @space.update(space_params)
+        format.turbo_stream
         format.html { redirect_to warehouse_space_url(@warehouse), notice: "Space was successfully updated." }
         format.json { render :show, status: :ok, location: @space }
       else
@@ -53,6 +55,7 @@ class SpacesController < ApplicationController
     @space.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to warehouse_spaces_url(@warehouse), notice: "Space was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -70,6 +73,6 @@ class SpacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def space_params
-      params.require(:space).permit(:stock, :price, :expiration, :warehouse_id, :product_id)
+      params.require(:space).permit(:stock, :price, :warehouse_id, :product_id)
     end
 end

@@ -1,0 +1,6 @@
+<tr id=<%= dom_id(space) %>>
+  <td><%= space.product.name %></td>
+  <td><span class="badge rounded-pill bg-primary"><%= space.stock %></span></td>
+  <td><span class="badge rounded-pill bg-dark"><%= space.price %></span></td>
+  <td class="d-flex justify-content-end"><%= render 'spaces/components/products_table/action_dropdown', space: space %></td>
+</tr>

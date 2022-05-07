@@ -12,12 +12,12 @@
 
   <body>
     <% if current_user %>
+      <%= render 'layouts/components/modal' %>
       <div class="d-flex vh-100">
         <%= render 'layouts/components/sidebar' %>
         <div class="vw-100 mh-100 overflow-auto">
-          <div class="container mb-5">
+          <div class="container">
             <%= yield %>
-            <%= render 'layouts/components/modal' %>
           </div>
         </div>
       </div>

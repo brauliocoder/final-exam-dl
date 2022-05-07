@@ -60,13 +60,11 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.boolean "is_completed"
-    t.bigint "membership_id", null: false
+    t.boolean "is_completed", default: false
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["channel_id"], name: "index_orders_on_channel_id"
-    t.index ["membership_id"], name: "index_orders_on_membership_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -98,7 +96,6 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
   create_table "spaces", force: :cascade do |t|
     t.integer "stock"
     t.float "price"
-    t.datetime "expiration"
     t.bigint "warehouse_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -135,7 +132,6 @@ ActiveRecord::Schema.define(version: 2022_05_06_141247) do
   add_foreign_key "memberships", "roles"
   add_foreign_key "memberships", "users"
   add_foreign_key "orders", "channels"
-  add_foreign_key "orders", "memberships"
   add_foreign_key "sales", "orders"
   add_foreign_key "sales", "spaces"
   add_foreign_key "spaces", "products"
