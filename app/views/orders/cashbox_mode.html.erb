@@ -3,16 +3,17 @@
     <div class="sticky-top py-2 bg-white shadow-sm">
       <h3> <%= @channel.headquarter.brand %> <%= @channel.name %></h3>
 
-      <%= form_tag(cashbox_mode_path(@channel), method: :get, class: "d-flex mx-2") do %>
-        <%= text_field_tag :search, params[:search], class: "form-control me-2" %>
+      <%= form_tag(cashbox_mode_path(@channel), method: :get, data: { turbo_frame: "search-results" }, class: "d-flex mx-2") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control me-2", autocomplete: "off" %>
         <%= submit_tag "Search", class: "btn btn-outline-success" %>
       <% end %>
 
     </div>
-    <div id="item-search-results">
-      <%# TODO search items %>
-      <% @products.each do |space| %>
-        <%= render 'friedman/components/cashbox/search_item', space: space %>
+    <div>
+      <%= turbo_frame_tag "search-results" do %>
+        <% @products.each do |space| %>
+          <%= render 'orders/components/cashbox/search_item', space: space %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -23,12 +24,12 @@
       </div>
       <div id="ticket-items" class="p-2">
         <%# TODO ticket items %>
-        <%= render 'friedman/components/cashbox/item_card' %>
+        <%= render 'orders/components/cashbox/item_card' %>
       </div>
     </div>
     <div class="bg-light mt-auto border-top">
 
-      <%= render 'friedman/components/cashbox/ticket_info' %>
+      <%= render 'orders/components/cashbox/ticket_info' %>
 
       <div class="border-top border-dark p-2 d-flex justify-content-between">
         <a href="#" class="btn btn-outline-danger">Discard</a>

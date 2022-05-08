@@ -1,31 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<div class="d-flex justify-content-between mb-2">
+  <h2 class="m-0 p-0">Cashbox mode</h2>
+  <span data-bs-toggle='modal' data-bs-target='#staticBackdrop' >
+    <%# <%= link_to 'Create New Headquarter', new_headquarter_path, class: "btn btn-outline-dark", data: { 'turbo_frame': 'remote_modal'} %>
+  </span>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Is completed</th>
-      <th>Membership</th>
-      <th>Channel</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.is_completed %></td>
-        <td><%= order.membership_id %></td>
-        <td><%= order.channel_id %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<div class="container">
+  <%= render 'orders/components/channels/card' %>
+</div>

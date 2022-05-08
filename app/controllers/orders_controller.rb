@@ -1,10 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_channel, only: %i[ cashbox_mode ]
 
   # GET /orders or /orders.json
   def index
     @orders = Order.all
   end
+
+  def cashbox_mode
+    @products = @channel.search_product(params[:search])
+  end
+  
 
   # GET /orders/1 or /orders/1.json
   def show
@@ -59,8 +65,17 @@ class OrdersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def select_or_create_current_order
+      @order = Order.find()
+    end
+    
+
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def set_channel
+      @channel = Channel.find(params[:channel_id])
     end
 
     # Only allow a list of trusted parameters through.
