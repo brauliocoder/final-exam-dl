@@ -3,4 +3,9 @@ class Sale < ApplicationRecord
 
   belongs_to :order
   belongs_to :space
+
+  def product_name
+    return self.space.product.name
+  end
+  
 end

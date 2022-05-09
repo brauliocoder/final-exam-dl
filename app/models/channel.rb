@@ -10,8 +10,16 @@ class Channel < ApplicationRecord
 
   def search_product(search_name)
     whs = headquarter.warehouses.pluck(:id)
-    q = Space.where(warehouse_id: whs).joins(:product).where("products.name ILIKE ?", "%#{search_name}%")
+    query = Space.where(warehouse_id: whs).joins(:product).where("products.name ILIKE ?", "%#{search_name}%")
 
-    return q
+    return query
   end
+
+  # select product from a warehouse
+  def find_product(product_id)
+    whs = headquarter.warehouses.pluck(:id)
+    product = Space.where(warehouse_id: whs).find_by_id(product_id)    
+    return product
+  end
+  
 end

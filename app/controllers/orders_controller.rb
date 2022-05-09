@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-  before_action :set_channel, only: %i[ cashbox_mode ]
+  before_action :set_channel, only: %i[ cashbox_mode add_product ]
+  before_action :select_or_create_current_order, only: %i[ cashbox_mode add_product ]
 
   # GET /orders or /orders.json
   def index
@@ -10,8 +11,13 @@ class OrdersController < ApplicationController
   def cashbox_mode
     @products = @channel.search_product(params[:search])
   end
-  
 
+  def add_product
+    @product = @channel.find_product(params[:product_id])
+    @sale = Sale.new(order_id: @order.id, space_id: @product.id, quantity: 1, price: @product.price)
+    @sale.save
+  end
+  
   # GET /orders/1 or /orders/1.json
   def show
   end
@@ -64,22 +70,23 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def select_or_create_current_order
-      @order = Order.find()
+    def set_channel
+      @channel = Channel.find(params[:channel_id])
     end
-    
+
+    def select_or_create_current_order
+      @order = Order.where(channel_id: @channel.id).where(is_completed: false).last
+      if @order.nil?
+        @order = Order.create(channel_id: @channel.id)
+      end
+    end
 
     def set_order
       @order = Order.find(params[:id])
     end
 
-    def set_channel
-      @channel = Channel.find(params[:channel_id])
-    end
-
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:is_completed, :membership_id, :channel_id, sale_ids: [])
+      params.require(:order).permit(:is_completed, :membership_id, :channel_id, :product_id, sale_ids: [])
     end
 end

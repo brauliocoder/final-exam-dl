@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     resources :orders
     get '/:channel_id/cashbox_mode/', to: 'orders#cashbox_mode', as: 'cashbox_mode'
+    post '/:channel_id/cashbox_mode/:product_id', to: 'orders#add_product', as: 'add_product'
 
     resources :products
 
