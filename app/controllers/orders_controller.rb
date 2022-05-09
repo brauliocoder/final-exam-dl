@@ -14,8 +14,7 @@ class OrdersController < ApplicationController
 
   def add_product
     @product = @channel.find_product(params[:product_id])
-    @sale = Sale.new(order_id: @order.id, space_id: @product.id, quantity: 1, price: @product.price)
-    @sale.save
+    @sale = @channel.add_product(@order, @product)
   end
   
   # GET /orders/1 or /orders/1.json

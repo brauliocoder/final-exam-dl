@@ -4,6 +4,8 @@ class Channel < ApplicationRecord
   belongs_to :headquarter
   has_and_belongs_to_many :memberships
 
+  has_many :orders
+
   def search_membership(user_id)
     memberships.find_by_user_id(user_id)
   end
@@ -22,4 +24,16 @@ class Channel < ApplicationRecord
     return product
   end
   
+  def add_product(order, product)
+    duplicated_item = order.sales.find_by_space_id(product.id)
+    if duplicated_item
+      duplicated_item.quantity += 1
+      duplicated_item.save
+      
+      return duplicated_item
+    else
+      return Sale.create(order_id: order.id, space_id: product.id, quantity: 1, price: product.price)
+    end
+  end
+
 end
