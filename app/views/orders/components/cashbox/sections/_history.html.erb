@@ -1,1 +1,21 @@
-<h1>Replaced correctly</h1>
+<div class="sticky-top py-2 bg-white">
+  <h3>Tickets history of <%= @channel.name %></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Products quantity</th>
+        <th scope="col">Total price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @channel.orders.where(is_completed: true).order(created_at: :desc).each do |order| %>
+        <tr>
+          <td><%= order.created_at %></td>
+          <td><%= order.sales.count %></td>
+          <td><%= order.sales.sum(:price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table
+</div>
