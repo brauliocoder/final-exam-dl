@@ -1,5 +1,6 @@
-<h1>New Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Back', products_path %>
+<%= turbo_frame_tag 'new_product' do %>
+  <div class="border rounded-2 my-2 p-2">
+    <h3>New Product</h3>
+    <%= render 'form', product: @product %>
+  </div>
+<% end %>

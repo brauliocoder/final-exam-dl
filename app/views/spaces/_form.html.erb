@@ -28,7 +28,11 @@
     <%= form.collection_select :product_id, Product.all, :id, :name, { include_blank: true } %>
   </div>
 
+  <%= link_to "Add product not listed", new_product_path, data: { 'turbo_frame': 'new_product'} %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= turbo_frame_tag "new_product" %>

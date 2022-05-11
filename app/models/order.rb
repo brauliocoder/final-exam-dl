@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :channel
 
   has_many :sales, dependent: :destroy
-  has_many :spaces, through: :sales
+  has_many :spaces, through: :sales, dependent: :nullify
 
   def total_order
     return self.sales.sum(:price)
