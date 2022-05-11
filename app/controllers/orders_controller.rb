@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-  before_action :set_channel, only: %i[ cashbox_mode add_product ]
-  before_action :select_or_create_current_order, only: %i[ cashbox_mode add_product ]
+  before_action :set_channel, only: %i[ cashbox_mode add_product remove_product remove_all_item end_transaction ]
+  before_action :set_product, only: %i[ cashbox_mode add_product remove_product remove_all_item ]
+  before_action :select_or_create_current_order, only: %i[ cashbox_mode add_product remove_product remove_all_item end_transaction ]
 
   # GET /orders or /orders.json
   def index
@@ -10,11 +11,55 @@ class OrdersController < ApplicationController
 
   def cashbox_mode
     @products = @channel.search_product(params[:search])
+
+    case params[:m_nav]
+    when 'history'
+      respond_to do |format|
+        format.turbo_stream { render "orders/turbo_stream/modes/history_mode" }
+      end
+    when 'stats'
+      respond_to do |format|
+        format.turbo_stream { render "orders/turbo_stream/modes/stats_mode" }
+      end
+    when 'default'
+      respond_to do |format|
+        format.turbo_stream { render "orders/turbo_stream/modes/default_mode" }
+      end
+    end
   end
 
   def add_product
-    @product = @channel.find_product(params[:product_id])
     @sale = @channel.add_product(@order, @product)
+    respond_to do |format|
+      format.turbo_stream { render "orders/turbo_stream/product_update" }
+    end
+  end
+
+  def remove_product
+    @sale = @channel.remove_product(@order, @product)
+    respond_to do |format|
+      format.turbo_stream { render "orders/turbo_stream/product_update" }
+    end
+  end
+
+  def remove_all_item
+    @sale = @channel.remove_product(@order, @product, remove_all = true)
+    respond_to do |format|
+      format.turbo_stream { render "orders/turbo_stream/product_update" }
+    end
+  end
+
+  def end_transaction
+    if @order.sales.count > 0
+      if params[:transaction_flag] == 'save'
+        @order.is_completed = true
+        @order.save
+      elsif params[:transaction_flag] == 'discard'
+        @order.destroy
+      end
+      
+      redirect_to cashbox_mode_path(@order)
+    end
   end
   
   # GET /orders/1 or /orders/1.json
@@ -71,6 +116,10 @@ class OrdersController < ApplicationController
   private
     def set_channel
       @channel = Channel.find(params[:channel_id])
+    end
+
+    def set_product
+      @product = @channel.find_product(params[:product_id])
     end
 
     def select_or_create_current_order

@@ -1,41 +1,25 @@
 <div class="vh-100 d-flex">
-  <div class="col-8 h-100 overflow-auto">
-    <div class="sticky-top py-2 bg-white shadow-sm">
-      <h3> <%= @channel.headquarter.brand %> <%= @channel.name %></h3>
-
-      <%= form_tag(cashbox_mode_path(@channel), method: :get, data: { turbo_frame: "search-results" }, class: "d-flex mx-2") do %>
-        <%= text_field_tag :search, params[:search], class: "form-control me-2", autocomplete: "off" %>
-        <%= submit_tag "Search", class: "btn btn-outline-success" %>
-      <% end %>
-
-    </div>
-    <div>
-      <%= turbo_frame_tag "search-results" do %>
-        <% @products.each do |space| %>
-          <%= render 'orders/components/cashbox/search_item', space: space %>
-        <% end %>
-      <% end %>
-    </div>
+  <div id="ticket-main-window" class="col-8 h-100 overflow-auto">
+    <%= render 'orders/components/cashbox/sections/search' %>
   </div>
-  <div class="col-4 d-flex flex-column border shadow">
-    <div class="h-100 overflow-auto">
-      <div class="bg-white p-2 sticky-top border-bottom d-flex justify-content-between align-items-center">
-        <h3 class="m-0">Ticket</h3>
-      </div>
-      <div id="ticket-items" class="p-2">
-        <%# TODO ticket items %>
-        <% @order.sales.each do |sale| %>
-          <%= render 'orders/components/cashbox/item_card', sale: sale %>
-        <% end %>
-      </div>
+  <div class="col-4 d-flex flex-column border shadow-sm">
+    <div class="bg-light p-2 sticky-top border-bottom d-flex justify-content-between align-items-center">
+      <h3 id="right-section-title" class="m-0">Ticket</h3>
+      <%= render 'orders/components/cashbox/ticket_navigation_buttons' %>
     </div>
-    <div class="bg-light mt-auto border-top">
 
-      <%= render 'orders/components/cashbox/ticket_info', order: @order %>
+    <div id="ticket-items" class="p-2 h-100 overflow-auto">
+      <%= render 'orders/components/cashbox/items_list' %>
+    </div>
+
+    <div class="bg-light mt-auto border-top">
+      <div id="ticket-info">
+        <%= render 'orders/components/cashbox/ticket_info', order: @order %>
+      </div>
 
       <div class="border-top border-dark p-2 d-flex justify-content-between">
-        <a href="#" class="btn btn-outline-danger">Discard</a>
-        <a href="#" class="btn btn-success active" aria-current="page">Complete transaction</a>
+        <%= link_to "Discard", end_transaction_path(@channel, transaction_flag: 'discard'), method: :update, class: "btn btn-outline-danger" %>
+        <%= link_to "Complete transaction", end_transaction_path(@channel, transaction_flag: 'save'), method: :update, class: "btn btn-success active" %>
       </div>
     </div>
   </div>

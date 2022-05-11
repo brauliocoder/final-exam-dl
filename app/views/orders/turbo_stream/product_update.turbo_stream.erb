@@ -1,0 +1,2 @@
+<%= turbo_stream.update "ticket-items", partial: "orders/components/cashbox/items_list" %>
+<%= turbo_stream.update "ticket-info", partial: "orders/components/cashbox/ticket_info", locals: { order: @order } %>

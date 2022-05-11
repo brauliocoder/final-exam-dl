@@ -27,12 +27,23 @@ class Channel < ApplicationRecord
   def add_product(order, product)
     duplicated_item = order.sales.find_by_space_id(product.id)
     if duplicated_item
-      duplicated_item.quantity += 1
+      q = duplicated_item.quantity += 1
+      duplicated_item.price = product.price * q
       duplicated_item.save
       
       return duplicated_item
     else
       return Sale.create(order_id: order.id, space_id: product.id, quantity: 1, price: product.price)
+    end
+  end
+
+  def remove_product(order, product, remove_all = false)
+    item = order.sales.find_by_space_id(product.id)
+    if item.quantity > 1 && !remove_all
+      item.quantity -= 1
+      item.save
+    else
+      item.destroy
     end
   end
 

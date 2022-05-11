@@ -1,18 +1,21 @@
-<div class="border border-1 rounded-3 d-flex justify-content-between align-items-center p-2">
-  <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button type="button" class="btn btn-sm px-3 btn-outline-success border">+</button>
-    <button type="button" class="btn btn-sm btn-outline-dark border">
+<div id=<%= dom_id(sale) %> class="border border-1 rounded-3 d-flex justify-content-start align-items-center p-2">
+  <div class="btn-group me-2" role="group" aria-label="Basic outlined example">
+    <%= link_to "+", add_product_path(sale.order.channel.id, sale.space.id), method: :update, class: "btn btn-sm px-3 btn-outline-success border" %>
+    <%= link_to remove_all_item_path(sale.order.channel.id, sale.space.id), method: :delete, class: "btn btn-sm btn-outline-dark border" do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="15px" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
       </svg>
-    </button>
-    <button type="button" class="btn btn-sm px-3 btn-outline-success border">-</button>
+    <% end %>
+    <%= link_to "-", remove_product_path(sale.order.channel.id, sale.space.id), method: :delete, class: "btn btn-sm px-3 btn-outline-success border" %>
   </div>
-  <div class="d-flex justify-content-start align-items-center" data-bs-toggle="tooltip" title="<%= sale.product_name %>">
-    <small><span class="me-1 text-truncate"><%= sale.product_name %></span></small>
-    <span class="badge rounded-pill bg-black text-light">x<%= sale.quantity %></span>
-    <div class="mx-1">
-      <span>$<%= number_with_precision(sale.price, precision: 0, delimiter: '.', separator: ',') %></span>
+  <small data-bs-toggle="tooltip" title="<%= sale.product_name %>"><span><%= sale.product_name %></span></small>
+  <div class="d-flex justify-content-end align-items-center ms-auto">
+    <div class="text-end">
+      <span>$<%= number_with_precision(sale.space.price, precision: 0, delimiter: '.', separator: ',') %></span>
+      <% if sale.quantity > 1 %>
+        <small>(<span>$<%= number_with_precision(sale.price, precision: 0, delimiter: '.', separator: ',') %></span>)</small>
+      <% end %>
     </div>
+    <span class="badge ms-2 rounded-pill bg-black text-light">x<%= sale.quantity %></span>
   </div>
 </div>

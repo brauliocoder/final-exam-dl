@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :channel
 
-  has_many :sales
+  has_many :sales, dependent: :destroy
   has_many :spaces, through: :sales
 
   def total_order
@@ -15,5 +15,4 @@ class Order < ApplicationRecord
   def total_units
     return self.sales.sum(:quantity)
   end
-
 end

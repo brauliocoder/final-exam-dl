@@ -1,0 +1,16 @@
+<div class="sticky-top py-2 bg-white">
+  <h3> <%= @channel.headquarter.brand %> <%= @channel.name %></h3>
+
+  <%= form_tag(cashbox_mode_path(@channel), method: :get, data: { turbo_frame: "search-results" }, class: "d-flex mx-2") do %>
+    <%= text_field_tag :search, params[:search], class: "form-control me-2", autocomplete: "off" %>
+    <%= submit_tag "Search", class: "btn btn-outline-success" %>
+  <% end %>
+
+</div>
+<div class="me-2">
+  <%= turbo_frame_tag "search-results" do %>
+    <% @products.each do |space| %>
+      <%= render 'orders/components/cashbox/search_item', space: space %>
+    <% end %>
+  <% end %>
+</div>

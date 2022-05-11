@@ -1,0 +1,3 @@
+<% @order.sales.order(created_at: :asc).each do |sale| %>
+  <%= render 'orders/components/cashbox/item_card', sale: sale %>
+<% end %>

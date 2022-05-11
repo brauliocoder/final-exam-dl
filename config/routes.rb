@@ -15,7 +15,14 @@ Rails.application.routes.draw do
 
     resources :orders
     get '/:channel_id/cashbox_mode/', to: 'orders#cashbox_mode', as: 'cashbox_mode'
+    get '/:channel_id/history_mode/', to: 'orders#history_mode', as: 'history_mode'
+    get '/:channel_id/stats_mode/', to: 'orders#stats_mode', as: 'stats_mode'
+    
     post '/:channel_id/cashbox_mode/:product_id', to: 'orders#add_product', as: 'add_product'
+    delete '/:channel_id/cashbox_mode/:product_id', to: 'orders#remove_product', as: 'remove_product'
+    delete '/:channel_id/cashbox_mode/:product_id/remove_all', to: 'orders#remove_all_item', as: 'remove_all_item'
+    
+    post '/:channel_id/cashbox_mode/', to: 'orders#end_transaction', as: 'end_transaction'
 
     resources :products
 
