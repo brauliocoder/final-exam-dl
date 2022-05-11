@@ -19,6 +19,7 @@
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.channels.count %></span> channels available</small></li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.warehouses.count %></span> warehouses using</small></li>
         <li class="list-group-item"><small><span class="badge rounded-pill bg-dark"><%= headquarter.memberships.count %></span> members</small></li>
+        <li class="list-group-item"><small><span class="badge rounded-pill bg-dark">$<%= number_with_precision(headquarter.total_income, precision: 2, delimiter: '.', separator: ',') %></span> income</small></li>
       </ul>
     </div>
     <div class="card-footer d-flex justify-content-start">
