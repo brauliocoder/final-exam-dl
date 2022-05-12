@@ -1,4 +1,5 @@
 class HeadquartersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_headquarter, only: %i[ show edit update destroy connect_warehouse ]
 
   # GET /headquarters or /headquarters.json

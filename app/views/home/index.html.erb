@@ -1,2 +1,31 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <% if current_user %>
+    <div class="container d-flex flex-column vh-100 justify-content-center align-items-center">
+      <h1>
+        <b>Welcome to</b><br><i>Metrik</i>
+      </h1>
+      <hr>
+      <ol>
+        <li><p>Create a headquarter</p></li>
+        <li><p>Create a warehouse</p></li>
+        <li><p>Create some sell channels on headquarters</p></li>
+        <li><p>Register you sells</p></li>
+        <li><p>Invite members</p></li>
+      </ol>
+    </div>
+  <% else %>
+    <%= render 'home/components/navbar' %>
+    <div class="container">
+      <div class="d-flex flex-col my-5 rounded-2">
+        <div class="p-5 bg-light text-dark text-end shadow-sm border d-flex align-items-center">
+          <h1 class="me-5">Metrik</h1>
+          <i><h3>Easily measure every sell, put order on your inventory and manage your small bussiness as a pro.</h3></i>
+        </div>
+        <div class="">
+          <img src="https://ak.picdn.net/shutterstock/videos/3633134/thumb/1.jpg" width="600px" alt="">
+        </div>
+      </div>
+    <%= render 'home/components/pricing' %>
+    </div>
+
+    <%= render 'home/components/footer' %>
+  <% end %>

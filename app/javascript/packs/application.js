@@ -7,11 +7,10 @@ import Rails from "@rails/ujs"
 import "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "chartkick/chart.js"
 import "bootstrap"
 import "../controllers"
 import "../stylesheets/application"
-import "chartkick/chart.js"
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()

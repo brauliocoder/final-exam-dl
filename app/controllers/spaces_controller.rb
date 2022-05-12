@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_warehouse
   before_action :set_space, only: %i[ show edit update destroy ]
 

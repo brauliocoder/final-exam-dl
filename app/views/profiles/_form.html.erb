@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :user_id %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -20,12 +22,7 @@
     <%= form.label :birthday %>
     <%= form.datetime_select :birthday %>
   </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
+  
   <div class="actions">
     <%= form.submit %>
   </div>

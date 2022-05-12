@@ -1,4 +1,6 @@
 class ChannelsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :get_headquarter
   before_action :set_channel, only: %i[ show edit update destroy connect_members ]
 

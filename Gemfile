@@ -54,3 +54,13 @@ gem "faker", "~> 2.20"
 gem "hotwire-rails", "~> 0.1.3"
 
 gem "chartkick", "~> 4.1"
+
+gem "groupdate", "~> 6.1"
+
+gem "highcharts-rails", "~> 6.0"
+
+gem "omniauth-google-oauth2", "~> 1.0"
+
+gem "dotenv-rails", "~> 2.7"
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"

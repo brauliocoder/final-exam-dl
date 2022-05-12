@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_headquarter, except: [:member_invitations]
   before_action :set_membership, only: %i[ show edit update destroy connect_channels ]
 

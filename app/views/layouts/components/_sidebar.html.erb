@@ -54,7 +54,6 @@
         <small><strong><%= current_user.email.split('@')[0] %></strong></small>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Subscription</a></li>
         <li><%= link_to "Profile", profile_path(current_user.profile.id), class: "dropdown-item" %></li>
         <li><hr class="dropdown-divider"></li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"  %></li>

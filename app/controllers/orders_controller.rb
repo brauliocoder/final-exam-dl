@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :set_channel, only: %i[ cashbox_mode add_product remove_product remove_all_item end_transaction ]
   before_action :set_product, only: %i[ cashbox_mode add_product remove_product remove_all_item ]

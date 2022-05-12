@@ -1,1 +1,2 @@
-<h1>Stats here</h1>
+<h3 class="mt-2">Stats of channel "<%= @channel.name %>" from "<%= @channel.headquarter.brand %>"</h3>
+<%= line_chart Sale.group_by_day(:created_at).count %>

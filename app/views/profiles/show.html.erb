@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User:</strong>
+  <%= @profile.user.email %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @profile.name %>
 </p>
@@ -8,11 +13,6 @@
 <p>
   <strong>Birthday:</strong>
   <%= @profile.birthday %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %>
