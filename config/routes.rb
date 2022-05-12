@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
-
+  
   authenticate :user do
+    resources :profiles, only: [:show, :new, :create, :edit, :update]
+
     resources :headquarters do
       resources :channels
       resources :memberships
