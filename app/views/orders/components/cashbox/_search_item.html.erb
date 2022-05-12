@@ -5,6 +5,6 @@
     <li class="list-group-item bg-light border-0 border-end"><span class="badge rounded-pill border bg-white text-dark"><%= space.warehouse.name %></span></li>
     <li class="list-group-item bg-light border-0"><span class="me-1"><%= space.product.name %></span></li>
   </ul>
-  
-  <%= link_to "add", add_product_path(@channel.id, space.id), method: :update, class: "me-2 px-4 btn btn-secondary btn-sm" %>
+
+  <%= link_to "add", add_product_path(@channel.id, space.id), method: :update, class: "me-2 px-4 btn btn-secondary btn-sm #{space.stock < 1 ? "disabled" : ""}" %>
 </div>

@@ -1,2 +1,3 @@
 <%= turbo_stream.update "ticket-items", partial: "orders/components/cashbox/items_list" %>
+<%= turbo_stream.replace dom_id(@sale.space), partial: "orders/components/cashbox/search_item", locals: { space: @sale.space } %>
 <%= turbo_stream.update "ticket-info", partial: "orders/components/cashbox/ticket_info", locals: { order: @order } %>
