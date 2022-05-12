@@ -7,5 +7,5 @@ class Sale < ApplicationRecord
   def product_name
     return self.space.product.name
   end
-  
+
 end

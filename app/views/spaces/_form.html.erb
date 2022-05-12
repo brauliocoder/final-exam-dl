@@ -14,6 +14,13 @@
   <%= form.hidden_field :warehouse_id %>
 
   <div class="field">
+    <%= form.label :product_id %>
+    <%= form.collection_select :product_id, Product.all, :id, :name, { include_blank: true } %>
+  </div>
+
+  <%= link_to "Add a product not listed", new_product_path, data: { 'turbo_frame': 'new_product'} %>
+
+  <div class="field">
     <%= form.label :stock %>
     <%= form.number_field :stock %>
   </div>
@@ -22,13 +29,6 @@
     <%= form.label :price %>
     <%= form.text_field :price %>
   </div>
-
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.collection_select :product_id, Product.all, :id, :name, { include_blank: true } %>
-  </div>
-
-  <%= link_to "Add product not listed", new_product_path, data: { 'turbo_frame': 'new_product'} %>
 
   <div class="actions">
     <%= form.submit %>

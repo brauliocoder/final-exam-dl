@@ -7,4 +7,14 @@ class Space < ApplicationRecord
 
   has_many :sales, dependent: :destroy
   has_many :orders, through: :sales, dependent: :destroy
+
+  def reduce_stock(reduction)
+    self.stock -= reduction
+    self.save
+  end
+  
+  def return_stock(increment)
+    self.stock += increment
+    self.save
+  end
 end

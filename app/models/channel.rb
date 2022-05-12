@@ -27,13 +27,23 @@ class Channel < ApplicationRecord
   def add_product(order, product)
     duplicated_item = order.sales.find_by_space_id(product.id)
     if duplicated_item
-      q = duplicated_item.quantity += 1
-      duplicated_item.price = product.price * q
-      duplicated_item.save
+      if product.stock > 0
+        q = duplicated_item.quantity += 1
+        duplicated_item.price = product.price * q
+        duplicated_item.save
+  
+        duplicated_item.space.reduce_stock(1)
+        
+        return duplicated_item
+      end
       
-      return duplicated_item
-    else
-      return Sale.create(order_id: order.id, space_id: product.id, quantity: 1, price: product.price)
+    else 
+      if product.stock > 0
+        sale = Sale.create(order_id: order.id, space_id: product.id, quantity: 1, price: product.price)
+        sale.space.reduce_stock(1)
+  
+        return sale
+      end
     end
   end
 
@@ -42,7 +52,10 @@ class Channel < ApplicationRecord
     if item.quantity > 1 && !remove_all
       item.quantity -= 1
       item.save
+
+      item.space.return_stock(1)
     else
+      item.space.return_stock(item.quantity)
       item.destroy
     end
   end

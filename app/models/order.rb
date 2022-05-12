@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  before_destroy :restore_stocks
+
   belongs_to :channel
 
   has_many :sales, dependent: :destroy
@@ -15,4 +17,12 @@ class Order < ApplicationRecord
   def total_units
     return self.sales.sum(:quantity)
   end
+
+  def restore_stocks
+    sales.each do |sale|
+      sale.space.return_stock(sale.quantity)
+    end
+  end
+  
+  
 end
