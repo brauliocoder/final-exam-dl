@@ -17,4 +17,5 @@ class Headquarter < ApplicationRecord
     
     return total
   end
+  
 end

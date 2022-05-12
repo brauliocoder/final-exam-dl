@@ -8,7 +8,19 @@
 </div>
 
 <div class="row row-cols-3 g-2 gy-4" id="headquarters">
-  <% @headquarters.each do |hq| %>
+  <% current_user.headquarters.each do |hq| %>
     <%= render 'headquarters/components/headquarter_card/card', headquarter: hq %>
+  <% end %>
+</div>
+
+<hr class="mt-5">
+
+<div class="d-flex justify-content-between mb-2">
+  <h2 class="m-0 p-0">Invited to participate</h2>
+</div>
+
+<div class="row row-cols-3 g-2 gy-4 mb-5" id="headquarters">
+  <% current_user.memberships.where(role_id: Role.find_by_title('headquarter_admin').id).each do |membership| %>
+    <%= render 'headquarters/components/headquarter_card/card', headquarter: membership.headquarter %>
   <% end %>
 </div>

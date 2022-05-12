@@ -26,9 +26,14 @@ class HeadquartersController < ApplicationController
   # POST /headquarters or /headquarters.json
   def create
     @headquarter = Headquarter.new(headquarter_params)
-
     respond_to do |format|
       if @headquarter.save
+        @headquarter.memberships.create(
+          role_id: Role.find_by_title("channel_depot_admin").id,
+          user_id: current_user.id,
+          invitation_email: current_user.email
+        )
+
         format.turbo_stream
         format.html { redirect_to headquarter_url(@headquarter), notice: "Headquarter was successfully created." }
         format.json { render :show, status: :created, location: @headquarter }

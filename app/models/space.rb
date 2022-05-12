@@ -5,6 +5,6 @@ class Space < ApplicationRecord
   belongs_to :warehouse
   belongs_to :product
 
-  has_many :sales
-  has_many :orders, through: :sales
+  has_many :sales, dependent: :destroy
+  has_many :orders, through: :sales, dependent: :destroy
 end

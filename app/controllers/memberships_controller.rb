@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :get_headquarter
+  before_action :get_headquarter, except: [:member_invitations]
   before_action :set_membership, only: %i[ show edit update destroy connect_channels ]
 
   # GET /memberships or /memberships.json
@@ -23,9 +23,17 @@ class MembershipsController < ApplicationController
   def connect_channels
   end
 
+  def member_invitations
+  end
+
   # POST /memberships or /memberships.json
   def create
     @membership = @headquarter.memberships.build(membership_params)
+
+    user = User.find_by_email(@membership.invitation_email)
+    if user
+      @membership.user_id = user.id
+    end
 
     respond_to do |format|
       if @membership.save

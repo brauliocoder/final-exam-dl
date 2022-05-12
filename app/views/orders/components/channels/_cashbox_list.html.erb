@@ -1,0 +1,23 @@
+<% current_user.headquarters.each do |headquarter| %>
+  <h5>
+    Channels from <%= headquarter.brand %>
+  </h5>
+  <div class="row row-cols-4 g-2 mb-5">
+    <% headquarter.channels.each do |channel| %>
+      <%= render 'orders/components/channels/card', channel: channel %>
+    <% end %>
+  </div>
+<% end %>
+
+<hr>
+
+<% current_user.memberships.where(role_id: Role.find_by_title('ally').id).each do |membership| %>
+  <h5>
+    Channels from <%= membership.headquarter.brand %>
+  </h5>
+  <div class="row row-cols-4 g-2 mb-5">
+    <% membership.channels.each do |channel| %>
+      <%= render 'orders/components/channels/card', channel: channel %>
+    <% end %>
+  </div>
+<% end %>

@@ -11,8 +11,7 @@ class Membership < ApplicationRecord
   has_and_belongs_to_many :channels
 
   def asign_unique_code
-    # self.unique_code = Digest::SHA256.hexdigest "#{rand(1000..9999)}"
-    self.unique_code = "#{rand(1000..9999)}"
+    self.unique_code = Digest::SHA256.hexdigest "#{self.id}#{self.created_at}"
     self.save
   end
 end

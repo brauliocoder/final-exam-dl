@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Memberships</h1>
+<div class="row row-cols-2 g-3 gy-4" id="headquarters">
+  <% current_user.memberships.each do |membership| %>
+    <%= render 'memberships/components/invitation/invitation_card', membership: membership %>
+  <% end %>
+</div>

@@ -9,7 +9,7 @@
 Role.delete_all()
 Role.create([
   {title: "ally", description: "an ally that only can make transactions"},
-  {title: "channel_admin", description: "complete admin to edit the channel"},
+  {title: "headquarter_admin", description: "complete admin to edit the channel"},
   {title: "depot_admin", description: "complete access to edit warehouses but not the channel"},
   {title: "channel_depot_admin", description: "complete permission to edit channels and his warehouses"}
 ])

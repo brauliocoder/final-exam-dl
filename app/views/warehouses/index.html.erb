@@ -6,9 +6,21 @@
     <%= link_to 'Create New Warehouse', new_warehouse_path, class: "btn btn-outline-dark", data: { 'turbo_frame': 'remote_modal'} %>
   </span>
 </div>
-
 <div class="row row-cols-3 g-2 gy-4" id="warehouses">
-  <% @warehouses.each do |wh| %>
+  <% current_user.warehouses.each do |wh| %>
     <%= render 'warehouses/components/warehouse_card/card', warehouse: wh %>
+  <% end %>
+</div>
+
+<hr class="mt-5">
+
+<div class="d-flex justify-content-between mb-2">
+  <h2 class="m-0 p-0">Invited to participate</h2>
+</div>
+<div class="row row-cols-3 g-2 gy-4 mb-5" id="headquarters">
+  <% current_user.memberships.where(role_id: Role.find_by_title('depot_admin').id).each do |membership| %>
+    <% membership.headquarter.warehouses.each do |warehouse| %>
+      <%= render 'warehouses/components/warehouse_card/card', warehouse: warehouse %>
+    <% end %>
   <% end %>
 </div>

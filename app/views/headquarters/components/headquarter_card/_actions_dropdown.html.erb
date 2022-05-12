@@ -16,11 +16,13 @@
       </span>
     </li>
 
-    <li>
-      <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
-        <%= link_to 'Connect warehouse access', connect_warehouse_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
-      </span>
-    </li>
+    <% if headquarter.user.id == current_user.id %>
+      <li>
+        <span data-bs-toggle='modal' data-bs-target='#staticBackdrop'>
+          <%= link_to 'Connect warehouse access', connect_warehouse_path(headquarter), class: 'dropdown-item', data: { 'turbo_frame': 'remote_modal'} %>
+        </span>
+      </li>
+    <% end %>
 
     <li><hr class="dropdown-divider"></li>
     
