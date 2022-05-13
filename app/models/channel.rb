@@ -54,6 +54,8 @@ class Channel < ApplicationRecord
       item.save
 
       item.space.return_stock(1)
+
+      return item
     else
       item.space.return_stock(item.quantity)
       item.destroy
